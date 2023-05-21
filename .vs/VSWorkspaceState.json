@@ -1,8 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Source C#"
+    "\\Source C#",
+    "\\Source C#\\Ranch_Sorting_App",
+    "\\Source C#\\Ranch_Sorting_App\\Ranch_Sorting_App"
   ],
-  "SelectedNode": "\\Source C#",
+  "SelectedNode": "\\Source C#\\Ranch_Sorting_App\\Ranch_Sorting_App\\LancementRound.cs",
   "PreviewInSolutionExplorer": false
 }

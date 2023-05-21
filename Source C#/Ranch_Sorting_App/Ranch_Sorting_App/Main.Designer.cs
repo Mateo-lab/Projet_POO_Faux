@@ -31,7 +31,6 @@
             splitContainer1 = new SplitContainer();
             richTextBox1 = new RichTextBox();
             splitContainer2 = new SplitContainer();
-            domainUpDown1 = new DomainUpDown();
             txtBoxNomEpreuve = new TextBox();
             btnValiderEpreuve = new Button();
             btnNouveauLieu = new Button();
@@ -40,6 +39,7 @@
             btnSupprimerEquipe = new Button();
             btnStart = new Button();
             btnNouvelleEquipe = new Button();
+            cmbBoxNomLieu = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -89,7 +89,7 @@
             // 
             // splitContainer2.Panel1
             // 
-            splitContainer2.Panel1.Controls.Add(domainUpDown1);
+            splitContainer2.Panel1.Controls.Add(cmbBoxNomLieu);
             splitContainer2.Panel1.Controls.Add(txtBoxNomEpreuve);
             splitContainer2.Panel1.Controls.Add(btnValiderEpreuve);
             splitContainer2.Panel1.Controls.Add(btnNouveauLieu);
@@ -106,15 +106,6 @@
             splitContainer2.Size = new Size(442, 446);
             splitContainer2.SplitterDistance = 223;
             splitContainer2.TabIndex = 0;
-            // 
-            // domainUpDown1
-            // 
-            domainUpDown1.Location = new Point(264, 104);
-            domainUpDown1.Name = "domainUpDown1";
-            domainUpDown1.Size = new Size(168, 23);
-            domainUpDown1.TabIndex = 11;
-            domainUpDown1.Text = "Séléctionner le lieu";
-            domainUpDown1.TextAlign = HorizontalAlignment.Center;
             // 
             // txtBoxNomEpreuve
             // 
@@ -196,6 +187,15 @@
             btnNouvelleEquipe.UseVisualStyleBackColor = true;
             btnNouvelleEquipe.Click += btnNouvelleEquipe_Click;
             // 
+            // cmbBoxNomLieu
+            // 
+            cmbBoxNomLieu.FormattingEnabled = true;
+            cmbBoxNomLieu.Location = new Point(264, 109);
+            cmbBoxNomLieu.Name = "cmbBoxNomLieu";
+            cmbBoxNomLieu.Size = new Size(168, 23);
+            cmbBoxNomLieu.TabIndex = 12;
+            cmbBoxNomLieu.Text = "Choissir un lieu";
+            // 
             // Main
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -220,7 +220,6 @@
 
         private SplitContainer splitContainer1;
         private SplitContainer splitContainer2;
-        private DomainUpDown domainUpDown1;
         private TextBox txtBoxNomEpreuve;
         private Button btnValiderEpreuve;
         private Button btnNouveauLieu;
@@ -230,5 +229,6 @@
         private Button btnStart;
         private Button btnNouvelleEquipe;
         private RichTextBox richTextBox1;
+        private ComboBox cmbBoxNomLieu;
     }
 }
