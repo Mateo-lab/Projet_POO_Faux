@@ -28,8 +28,6 @@ namespace Ranch_Sorting_App
 
         private void btnValiderEpreuve_Click(object sender, EventArgs e)
         {
-            NouvelleEpreuve nouvelleEpreuve = new NouvelleEpreuve();
-            nouvelleEpreuve.Show();
             this.Close();
         }
 
@@ -53,5 +51,6 @@ namespace Ranch_Sorting_App
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
         }
+        
     }
 }
