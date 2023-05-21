@@ -124,7 +124,6 @@
 
         #endregion
 
-        private DomainUpDown domainUpDown1;
         private TextBox txtBoxNomNouveauLieu;
         private Button btnValiderNouveauLieu;
         private Label lblAdresse;

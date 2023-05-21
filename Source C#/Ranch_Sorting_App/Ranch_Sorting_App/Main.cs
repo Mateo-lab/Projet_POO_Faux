@@ -44,5 +44,23 @@ namespace Ranch_Sorting_App
             LancementRound lancementRound = new LancementRound();
             lancementRound.Show();
         }
+        private void Main_formClosing(object sender, FormClosingEventArgs e)
+        {
+        }
+
+        private void splitContainer2_Panel1_Paint_1(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
+        {
+
+        }
+
+        private void splitContainer2_SplitterMoved(object sender, SplitterEventArgs e)
+        {
+
+        }
     }
 }

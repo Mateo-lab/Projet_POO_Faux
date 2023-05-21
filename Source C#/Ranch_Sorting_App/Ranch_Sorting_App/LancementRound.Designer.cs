@@ -52,7 +52,6 @@
             lblEquipeEnCours.Size = new Size(97, 15);
             lblEquipeEnCours.TabIndex = 0;
             lblEquipeEnCours.Text = "Equipe en cours :";
-            lblEquipeEnCours.Click += label1_Click;
             // 
             // btnGO
             // 
@@ -101,6 +100,7 @@
             // 
             btnBonneVache.AutoSize = true;
             btnBonneVache.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnBonneVache.Enabled = false;
             btnBonneVache.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnBonneVache.Location = new Point(502, 332);
             btnBonneVache.Name = "btnBonneVache";
@@ -115,6 +115,7 @@
             // 
             btnMauvaiseVache.AutoSize = true;
             btnMauvaiseVache.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnMauvaiseVache.Enabled = false;
             btnMauvaiseVache.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnMauvaiseVache.Location = new Point(755, 332);
             btnMauvaiseVache.Name = "btnMauvaiseVache";
@@ -170,6 +171,7 @@
             // 
             btnValidationResultat.AutoSize = true;
             btnValidationResultat.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnValidationResultat.Enabled = false;
             btnValidationResultat.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnValidationResultat.Location = new Point(478, 411);
             btnValidationResultat.Name = "btnValidationResultat";
@@ -177,6 +179,7 @@
             btnValidationResultat.TabIndex = 11;
             btnValidationResultat.Text = "Valider les résultats";
             btnValidationResultat.UseVisualStyleBackColor = true;
+            btnValidationResultat.Click += btnValidationResultat_Click;
             // 
             // lblAnnoncePremiereVache
             // 
@@ -205,7 +208,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(919, 465);
+            ClientSize = new Size(909, 458);
             Controls.Add(btnStop);
             Controls.Add(lblAnnoncePremiereVache);
             Controls.Add(btnValidationResultat);

@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             splitContainer1 = new SplitContainer();
-            richTextBox1 = new RichTextBox();
             splitContainer2 = new SplitContainer();
+            cmbBoxNomLieu = new ComboBox();
             txtBoxNomEpreuve = new TextBox();
             btnValiderEpreuve = new Button();
             btnNouveauLieu = new Button();
@@ -39,7 +39,7 @@
             btnSupprimerEquipe = new Button();
             btnStart = new Button();
             btnNouvelleEquipe = new Button();
-            cmbBoxNomLieu = new ComboBox();
+            richTextBox1 = new RichTextBox();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -67,18 +67,10 @@
             // 
             splitContainer1.Panel2.Controls.Add(splitContainer2);
             splitContainer1.Panel2.RightToLeft = RightToLeft.No;
-            splitContainer1.Size = new Size(800, 450);
-            splitContainer1.SplitterDistance = 350;
+            splitContainer1.Size = new Size(785, 462);
+            splitContainer1.SplitterDistance = 321;
             splitContainer1.TabIndex = 0;
-            // 
-            // richTextBox1
-            // 
-            richTextBox1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            richTextBox1.Location = new Point(50, 73);
-            richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(242, 294);
-            richTextBox1.TabIndex = 4;
-            richTextBox1.Text = "Ici on affice la base de donné mais attention pas dans cette text box";
+            splitContainer1.SplitterMoved += splitContainer1_SplitterMoved;
             // 
             // splitContainer2
             // 
@@ -103,9 +95,19 @@
             splitContainer2.Panel2.Controls.Add(btnStart);
             splitContainer2.Panel2.Controls.Add(btnNouvelleEquipe);
             splitContainer2.Panel2.RightToLeft = RightToLeft.No;
-            splitContainer2.Size = new Size(442, 446);
-            splitContainer2.SplitterDistance = 223;
+            splitContainer2.Size = new Size(456, 458);
+            splitContainer2.SplitterDistance = 214;
             splitContainer2.TabIndex = 0;
+            splitContainer2.SplitterMoved += splitContainer2_SplitterMoved;
+            // 
+            // cmbBoxNomLieu
+            // 
+            cmbBoxNomLieu.FormattingEnabled = true;
+            cmbBoxNomLieu.Location = new Point(264, 109);
+            cmbBoxNomLieu.Name = "cmbBoxNomLieu";
+            cmbBoxNomLieu.Size = new Size(168, 23);
+            cmbBoxNomLieu.TabIndex = 12;
+            cmbBoxNomLieu.Text = "Choissir un lieu";
             // 
             // txtBoxNomEpreuve
             // 
@@ -187,20 +189,20 @@
             btnNouvelleEquipe.UseVisualStyleBackColor = true;
             btnNouvelleEquipe.Click += btnNouvelleEquipe_Click;
             // 
-            // cmbBoxNomLieu
+            // richTextBox1
             // 
-            cmbBoxNomLieu.FormattingEnabled = true;
-            cmbBoxNomLieu.Location = new Point(264, 109);
-            cmbBoxNomLieu.Name = "cmbBoxNomLieu";
-            cmbBoxNomLieu.Size = new Size(168, 23);
-            cmbBoxNomLieu.TabIndex = 12;
-            cmbBoxNomLieu.Text = "Choissir un lieu";
+            richTextBox1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            richTextBox1.Location = new Point(50, 73);
+            richTextBox1.Name = "richTextBox1";
+            richTextBox1.Size = new Size(242, 294);
+            richTextBox1.TabIndex = 4;
+            richTextBox1.Text = "Ici on affice la base de donné mais attention pas dans cette text box";
             // 
             // Main
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(785, 462);
             Controls.Add(splitContainer1);
             Name = "Main";
             Text = "Main";
@@ -220,6 +222,7 @@
 
         private SplitContainer splitContainer1;
         private SplitContainer splitContainer2;
+        private ComboBox cmbBoxNomLieu;
         private TextBox txtBoxNomEpreuve;
         private Button btnValiderEpreuve;
         private Button btnNouveauLieu;
@@ -229,6 +232,5 @@
         private Button btnStart;
         private Button btnNouvelleEquipe;
         private RichTextBox richTextBox1;
-        private ComboBox cmbBoxNomLieu;
     }
 }

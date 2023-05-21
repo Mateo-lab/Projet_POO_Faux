@@ -2,36 +2,34 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Timer = System.Windows.Forms.Timer;
 
 namespace Ranch_Sorting_App
 {
     public partial class LancementRound : Form
     {
-
-        int m, s, cs, nbrVache;
-
+        private Timer timer;
+        int nbrVache;
+        private static Stopwatch chrono;
+        static DateTime startTime;
         private int numVache;
-        System.Timers.Timer? Timer;
         //En ajoutant l'annotation ? après le type System.Timers.Timer,
         //vous indiquez au compilateur que le champ Timer peut contenir une instance de System.Timers.Timer ou la valeur null.
         public LancementRound()
         {
             InitializeComponent();
+            timer = new Timer();
+            timer.Interval = 10;
+            timer.Tick += Timer_Tick;
         }
-
-
 
         private void LancementRound_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
         {
 
         }
@@ -40,30 +38,35 @@ namespace Ranch_Sorting_App
         {
 
         }
-        private void Timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        private void Timer_Tick(object sender, EventArgs e)
         {
-            cs++;
-            if (cs == 100)
-            {
-                s++;
-                cs = 0;
-            }
-            if (s == 60)
-            {
-                m++;
-                s = 0;
-            }
-            if (m == 1)
-            {
-                Timer.Stop();
-                this.Close();
-            }
+            // Appeler la mise à jour du libellé à chaque tick du Timer
+            UpdateTimerLabel();
 
-            this.Invoke(new Action(() =>
+            // Vérifier si le chronomètre doit être arrêté
+            if (!chrono.IsRunning)
             {
-                lblTimer.Text = string.Format("{0}:{1}:{2}", m.ToString().PadLeft(2, '0'), s.ToString().PadLeft(2, '0'), cs.ToString().PadLeft(2, '0'));
+                timer.Stop(); // Arrêter le timer
+                timer.Dispose(); // Disposer le timer
+            }
+        }
+        private void UpdateTimerLabel()
+        {
+            // Récupération du temps écoulé
+            TimeSpan elapsedTime = chrono.Elapsed;
+
+            // Mise à jour du libellé avec le temps écoulé en minutes, secondes et millisecondes
+            lblTimer.Invoke(new Action(() =>
+            {
+                lblTimer.Text = string.Format("{0:00}:{1:00}:{2:000}",
+                    elapsedTime.Minutes, elapsedTime.Seconds, elapsedTime.Milliseconds);
             }));
 
+            if (elapsedTime.Seconds == 90)
+            {
+                chrono.Stop();
+                btnValidationResultat.Enabled = true;
+            }
 
         }
 
@@ -74,6 +77,8 @@ namespace Ranch_Sorting_App
         }
         private void btnGO_Click(object sender, EventArgs e)
         {
+            btnBonneVache.Enabled = true;
+            btnMauvaiseVache.Enabled = true;
             GestionTimer();
             btnGO.Enabled = false;
             lblNumVache.Text = RandomNumber(0, 9).ToString();
@@ -81,15 +86,13 @@ namespace Ranch_Sorting_App
         }
         private void GestionTimer()
         {
-            m = 0;
-            s = 0;
-            cs = 0;
-            Timer = new System.Timers.Timer();
-            Timer.Interval = 10;
-            Timer.Elapsed += Timer_Elapsed;
-            Timer.Start();
+            timer.Start();
+            chrono = new Stopwatch();
+
+            // Démarrage du chronomètre
+            chrono.Start();
         }
-      
+
 
         private void btnEquipeSuivante_Click(object sender, EventArgs e)
         {
@@ -98,7 +101,7 @@ namespace Ranch_Sorting_App
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            Timer.Stop();
+            chrono.Stop();
         }
         private string TempsVache(int numvache)
         {
@@ -110,8 +113,9 @@ namespace Ranch_Sorting_App
 
             if (nbrVache == 9)
             {
-                Timer.Stop();
+                chrono.Stop();
                 btnBonneVache.Enabled = false;
+                btnValidationResultat.Enabled = true;
             }
 
             richTextBox1.AppendText('\n' + "Vache " + numVache + " : " + TempsVache(numVache));
@@ -129,7 +133,18 @@ namespace Ranch_Sorting_App
 
         private void btnMauvaiseVache_Click(object sender, EventArgs e)
         {
-            Timer.Stop();   
+            chrono.Stop();
+            richTextBox1.AppendText('\n' + "NULL");
+            btnValidationResultat.Enabled = true;
+        }
+
+        private void btnValidationResultat_Click(object sender, EventArgs e)
+        {
+            btnEquipeSuivante.Enabled = true;
+        }
+        private void LancementRound_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
         }
     }
 }
